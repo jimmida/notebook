@@ -1,0 +1,12 @@
+# curl "https://api.coursera.org/api/catalog.v1/courses?fields=id" -o CourseraCourseIds.json
+curl "https://api.coursera.org/api/catalog.v1/courses?fields=id,shortName,name,language,largeIcon,photo,previewLink,shortDescription,smallIcon,smallIconHover,subtitleLanguagesCsv,isTranslate,universityLogo,universityLogoSt,video,videoId,aboutTheCourse,targetAudience,faq,courseSyllabus,courseFormat,suggestedReadings,instructor,estimatedClassWorkload,aboutTheInstructor,recommendedBackground&includes=sessions,categories,instructors,universities" -o CourseraCourses.json
+
+curl "https://api.coursera.org/api/catalog.v1/courses?id=2599&fields=id,shortName,name,language,largeIcon,photo,previewLink,shortDescription,smallIcon,smallIconHover,subtitleLanguagesCsv,isTranslate,universityLogo,universityLogoSt,video,videoId,aboutTheCourse,targetAudience,faq,courseSyllabus,courseFormat,suggestedReadings,instructor,estimatedClassWorkload,aboutTheInstructor,recommendedBackground&includes=sessions,categories,instructors,universities" -o CourseraCourse.2599.json
+
+curl "https://api.coursera.org/api/catalog.v1/sessions?fields=id,courseId,homeLink,status,active,durationString,startDay,startMonth,startYear,name,signatureTrackCloseTime,signatureTrackOpenTime,signatureTrackPrice,signatureTrackRegularPrice,eligibleForCertificates,eligibleForSignatureTrack,certificateDescription,certificatesReady&includes=instructors,courses" -o CourseraSessions.json
+
+curl "https://api.coursera.org/api/catalog.v1/instructors?fields=id,photo,photo150,bio,prefixName,firstName,middleName,lastName,suffixName,fullName,title,department,website,websiteTwitter,websiteFacebook,websiteLinkedin,websiteGplus,shortName&includes=universities,courses,sessions" -o CourseraInstructors.json
+
+curl "https://api.coursera.org/api/catalog.v1/universities?fields=id,name,shortName,description,banner,homeLink,location,locationCity,locationState,locationCountry,locationLat,locationLng,classLogo,website,websiteTwitter,websiteFacebook,websiteYoutube,logo,squareLogo,landingPageBanner&includes=courses,instructors" -o CourseraUniversities.json
+
+curl "https://api.coursera.org/api/catalog.v1/categories?fields=id,name,shortName,description&includes=courses" -o CourseraCategories.json
