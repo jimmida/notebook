@@ -110,8 +110,13 @@ rails g migration CreateJoinTableCourseraInstructorUniveristy coursera_instructo
 
 rails g migration CreateJoinTableCourseraCourseUniversity coursera_course coursera_university
 
+#---------------------------------
+# Notebook Models
+#---------------------------------
+rails g scaffold Course name:string description:string url:string
 
+rails g scaffold Lesson course:reference name:string url:string
 
-
+rails g model Note course:references lesson:references content:text
 
 

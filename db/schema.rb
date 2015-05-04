@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426073318) do
+ActiveRecord::Schema.define(version: 20150501030644) do
 
   create_table "coursera_categories", id: false, force: true do |t|
     t.integer  "id",          null: false
@@ -173,5 +173,34 @@ ActiveRecord::Schema.define(version: 20150426073318) do
   end
 
   add_index "coursera_universities", ["id"], name: "index_coursera_universities_on_id", unique: true
+
+  create_table "courses", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lessons", force: true do |t|
+    t.integer  "course_id"
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lessons", ["course_id"], name: "index_lessons_on_course_id"
+
+  create_table "notes", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "lesson_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["course_id"], name: "index_notes_on_course_id"
+  add_index "notes", ["lesson_id"], name: "index_notes_on_lesson_id"
 
 end
