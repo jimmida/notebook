@@ -119,4 +119,12 @@ rails g scaffold Lesson course:reference name:string url:string
 
 rails g model Note course:references lesson:references content:text
 
+rails g controller Notes create update destroy
 
+rails g devise user
+
+rails g devise:views
+
+rails g migration AddUserToNote user:references
+
+rails g resource registration user:references course:references

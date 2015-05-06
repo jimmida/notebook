@@ -1,4 +1,4 @@
 class Lesson < ActiveRecord::Base
-    has_one :note
+    has_many :users, through: :notes
     belongs_to :course
 end

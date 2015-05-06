@@ -11,9 +11,14 @@ class LessonsController < ApplicationController
   # GET /lessons/1
   # GET /lessons/1.json
   def show
-    @note = Note.new
-    @note.course_id = @course.id
-    @note.lesson_id = @lesson.id
+    # TODO: try first_or_initialize
+    @note = Note.where(user_id: current_user.id, lesson_id: @lesson.id).first
+    if @note.nil?
+      @note = Note.new
+      @note.user_id   = current_user.id
+      @note.lesson_id = @lesson.id
+      @note.course_id = @lesson.course_id
+    end
   end
 
   # GET /lessons/new

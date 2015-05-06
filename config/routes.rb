@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  root to: "courses#index"
+
+  resources :notes, only: [:create, :update, :destroy]
+
   resources :courses do
     resources :lessons
   end
