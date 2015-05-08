@@ -18,6 +18,19 @@
         <td><%= course.url %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% if current_user %>
+          <td>
+          <% if current_user.registered? course %>
+            <% enrollment = current_user.enrollments.find_by_course_id(course.id) %>
+            <%= link_to 'Unregister', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% else %>
+            <% new_enrollment = {controller: :enrollments, action: :create, course_id: course.id} %>
+            <%= link_to 'Register', new_enrollment, :method => "post" %>
+          <% end %>
+          </td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>

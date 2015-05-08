@@ -1,0 +1,28 @@
+<h1>Listing Enrollments for <%= current_user.email %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <% course = enrollment.course %>
+      <tr>
+        <td><%= link_to course.name, course_lessons_path(course) %></td>
+        <td><%= course.description %></td>
+        <td><%= course.url %></td>
+        <td><%= link_to 'Unregister', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'All Courses', courses_path %>

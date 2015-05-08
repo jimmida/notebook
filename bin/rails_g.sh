@@ -128,3 +128,5 @@ rails g devise:views
 rails g migration AddUserToNote user:references
 
 rails g resource registration user:references course:references
+
+rails g migration RenameRegistrationToEnrollment
